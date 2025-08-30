@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-105ceffddf964cb7a5e600c5cf159c64/artifacts
+creation_timestamp: 1756566965562
+experiment_id: '220463733218747237'
+last_updated_timestamp: 1756566967697
+model_id: m-105ceffddf964cb7a5e600c5cf159c64
+model_type: null
+name: RandomForest
+source_run_id: 234aebe2a0484c99b5fbe1b5a146a5d9
+status: 2
+status_message: null

@@ -1,0 +1,6 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237
+creation_time: 1756566400982
+experiment_id: '220463733218747237'
+last_update_time: 1756566400982
+lifecycle_stage: active
+name: ForecastX_Regression

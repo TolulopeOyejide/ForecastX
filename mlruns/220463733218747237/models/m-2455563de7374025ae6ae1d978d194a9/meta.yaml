@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-2455563de7374025ae6ae1d978d194a9/artifacts
+creation_timestamp: 1756568823613
+experiment_id: '220463733218747237'
+last_updated_timestamp: 1756568825572
+model_id: m-2455563de7374025ae6ae1d978d194a9
+model_type: null
+name: XGBoost
+source_run_id: b1d5398624b94b11adf1a62b9f323635
+status: 2
+status_message: null

@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/ForecastX-/mlruns/220463733218747237/b6bcb04c8b594143813e1e2987eb4ec8/artifacts
+end_time: 1756569273130
+entry_point_name: ''
+experiment_id: '220463733218747237'
+lifecycle_stage: active
+run_id: b6bcb04c8b594143813e1e2987eb4ec8
+run_name: RandomForest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756569220471
+status: 3
+tags: []
+user_id: codespace

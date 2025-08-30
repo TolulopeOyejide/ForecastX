@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-3cdd37ed90a244888c20ae9392ca89b4/artifacts
+creation_timestamp: 1756566997649
+experiment_id: '220463733218747237'
+last_updated_timestamp: 1756566999751
+model_id: m-3cdd37ed90a244888c20ae9392ca89b4
+model_type: null
+name: SVM
+source_run_id: fae88ee947544309bfef758452388035
+status: 2
+status_message: null
