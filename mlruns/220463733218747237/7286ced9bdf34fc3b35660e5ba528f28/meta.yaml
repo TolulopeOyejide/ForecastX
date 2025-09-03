@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/ForecastX-/mlruns/220463733218747237/7286ced9bdf34fc3b35660e5ba528f28/artifacts
+end_time: 1756812354054
+entry_point_name: ''
+experiment_id: '220463733218747237'
+lifecycle_stage: active
+run_id: 7286ced9bdf34fc3b35660e5ba528f28
+run_name: PolynomialRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756812351817
+status: 3
+tags: []
+user_id: codespace

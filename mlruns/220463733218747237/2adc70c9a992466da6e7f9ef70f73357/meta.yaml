@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/ForecastX-/mlruns/220463733218747237/2adc70c9a992466da6e7f9ef70f73357/artifacts
+end_time: 1756723467424
+entry_point_name: ''
+experiment_id: '220463733218747237'
+lifecycle_stage: active
+run_id: 2adc70c9a992466da6e7f9ef70f73357
+run_name: KNN
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756723465214
+status: 3
+tags: []
+user_id: codespace

@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/ForecastX-/mlruns/220463733218747237/9040bdc3e27b4e7b8b418ec011fc783d/artifacts
+end_time: 1756893783716
+entry_point_name: ''
+experiment_id: '220463733218747237'
+lifecycle_stage: active
+run_id: 9040bdc3e27b4e7b8b418ec011fc783d
+run_name: XGBoost
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756893772665
+status: 3
+tags: []
+user_id: codespace

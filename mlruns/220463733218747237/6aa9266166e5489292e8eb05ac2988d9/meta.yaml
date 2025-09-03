@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/ForecastX-/mlruns/220463733218747237/6aa9266166e5489292e8eb05ac2988d9/artifacts
+end_time: 1756812440690
+entry_point_name: ''
+experiment_id: '220463733218747237'
+lifecycle_stage: active
+run_id: 6aa9266166e5489292e8eb05ac2988d9
+run_name: SVM
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756812415703
+status: 3
+tags: []
+user_id: codespace

@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/ForecastX-/mlruns/220463733218747237/09dc4dfd0f3c4950af6898c8c9f99b7e/artifacts
+end_time: 1756723405938
+entry_point_name: ''
+experiment_id: '220463733218747237'
+lifecycle_stage: active
+run_id: 09dc4dfd0f3c4950af6898c8c9f99b7e
+run_name: LinearRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756723397897
+status: 3
+tags: []
+user_id: codespace

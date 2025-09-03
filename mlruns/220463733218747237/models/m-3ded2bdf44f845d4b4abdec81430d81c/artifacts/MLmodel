@@ -1,0 +1,22 @@
+artifact_path: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-3ded2bdf44f845d4b4abdec81430d81c/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.1
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.0
+mlflow_version: 3.3.2
+model_id: m-3ded2bdf44f845d4b4abdec81430d81c
+model_size_bytes: 38111
+model_uuid: m-3ded2bdf44f845d4b4abdec81430d81c
+prompts: null
+run_id: 1b3fce3ebfe849dda707ee284f9e9f29
+utc_time_created: '2025-09-01 16:27:38.811132'

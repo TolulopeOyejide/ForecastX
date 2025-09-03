@@ -5,12 +5,14 @@ import seaborn as sns
 from scipy.stats import spearmanr
 from imblearn.over_sampling import SMOTE, RandomOverSampler
 from imblearn.under_sampling import RandomUnderSampler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from sklearn.preprocessing import LabelEncoder
 import subprocess
 import os
 from datetime import datetime
 
 
-RAW_DATA_PATH = "data/sample_data.csv"
+RAW_DATA_PATH = "data/company_sales_data.csv" #adjustable file name
 CLEAN_DATA_DIR = "data/cleaned/"
 
 if not os.path.exists(RAW_DATA_PATH):
@@ -20,105 +22,30 @@ if not os.path.exists(RAW_DATA_PATH):
 os.makedirs(CLEAN_DATA_DIR, exist_ok=True)
 
 # Read raw data
-df = pd.read_csv(RAW_DATA_PATH)
+df = pd.read_csv(RAW_DATA_PATH, encoding="ISO-8859-1")
 print(f"Raw Data Shape: {df.shape}")
-
-
-def create_time_features(df, date_col='date'):
-    """
-    Create time-based features from a given date column.
-
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        Input dataframe containing at least a date column.
-    date_col : str, optional (default='date')
-        Column name to parse as datetime.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Dataframe with new time features: day, weekday, month.
-    """
-    # Ensure the date column is in datetime format
-    df[date_col] = pd.to_datetime(df[date_col])
-    
-    # Extract day of the month
-    df['day'] = df[date_col].dt.day
-    
-    # Extract day of the week (0 = Monday, 6 = Sunday)
-    df['weekday'] = df[date_col].dt.weekday
-    
-    # Extract month number (1-12)
-    df['month'] = df[date_col].dt.month
-    
-    return df
-
-
-def aggregate_daily(df):
-    """
-    Aggregate sales and related features at the daily-product level.
-
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        Input dataframe containing 'date', 'product_id', 'sales', 
-        'price', 'promo', and 'marketing_spend' columns.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Aggregated dataframe with sum/mean/max operations.
-    """
-    # Group by date and product, applying aggregation functions
-    agg = df.groupby(['date', 'product_id']).agg({
-        'sales': 'sum',             # Total daily sales per product
-        'price': 'mean',            # Average daily price per product
-        'promo': 'max',             # Whether promo was active that day
-        'marketing_spend': 'sum'    # Total marketing spend
-    }).reset_index()
-    
-    return agg
-
-
-def add_rolling_features(df, window=7):
-    """
-    Add rolling statistical features to capture sales trends.
-
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        Input dataframe containing 'date', 'product_id', and 'sales'.
-    window : int, optional (default=7)
-        Rolling window size (number of days).
-
-    Returns
-    -------
-    pandas.DataFrame
-        Dataframe with new rolling mean and standard deviation features.
-    """
-    # Ensure chronological order within each product
-    df = df.sort_values(['product_id', 'date'])
-    
-    # Rolling mean of sales over the specified window
-    df['sales_roll_mean_7'] = (
-        df.groupby('product_id')['sales']
-          .transform(lambda x: x.rolling(window, min_periods=1).mean())
-    )
-    
-    # Rolling standard deviation of sales (fill NaN with 0 for stability)
-    df['sales_roll_std_7'] = (
-        df.groupby('product_id')['sales']
-          .transform(lambda x: x.rolling(window, min_periods=1).std().fillna(0))
-    )
-    
-    return df
 
 
 
 #----Statutory Data Quality Checks & Fixes
 
-# 1.Check data types of columns.
+# 1. Standardize the column headers
+def clean_column_names(df):
+    """
+    Make column headers lowercase and remove whitespace for consistency.
+    """
+    df.columns = (
+        df.columns.str.strip()      # remove leading/trailing spaces
+                  .str.lower()      # make lowercase
+                  .str.replace(" ", "_")  # replace spaces with underscore
+    )
+    return df
+
+
+
+
+
+# 2.Check data types of columns.
 def check_dtypes(df):
     """
     Returns the data types of all columns.
@@ -128,8 +55,7 @@ def check_dtypes(df):
 
 
 
-
-# 2. Check & Handle Missing Values.
+# 3. Check & Handle Missing Values.
 def check_missing_values(df):
     """
     Returns a DataFrame with counts and percentages of missing values per column.
@@ -162,7 +88,7 @@ def handle_missing_values(df, strategy="mean", fill_value=None):
 
 
 
-# 3. Check and Handle Duplicates.
+# 4. Check and Handle Duplicates.
 def check_duplicates(df):
     """
     Returns the number of duplicate rows in the DataFrame.
@@ -178,18 +104,21 @@ def remove_duplicates(df):
 
 
 
-# 4. Check and Handle Outliers.
+# 5. Check and Handle Outliers.
 def check_outliers(df, cols=None):
     if cols is None:
         cols = df.select_dtypes(include=np.number).columns
-    outlier_info = {}
+    
+    outlier_info = []
     for col in cols:
         Q1, Q3 = df[col].quantile(0.25), df[col].quantile(0.75)
         IQR = Q3 - Q1
         lower, upper = Q1 - 1.5 * IQR, Q3 + 1.5 * IQR
         outliers = ((df[col] < lower) | (df[col] > upper)).sum()
-        outlier_info[col] = outliers
-    return outlier_info
+        outlier_info.append({"column": col, "outlier_count": outliers})
+    
+    return pd.DataFrame(outlier_info)
+
 
 
 
@@ -211,7 +140,7 @@ def handle_outliers(df, column = None):
 
 
 
-# 5. Check feature_target correlations (Use in Training and Logging Python File)
+# 6. Check feature_target correlations (Use in Training and Logging Python File)
 def check_feature_target_correlation(df, target, threshold=0.4):
     """
     Returns features that have correlation with the target above the threshold.
@@ -256,7 +185,7 @@ def check_feature_target_correlation(df, target, threshold=0.4):
 
 
 
-#6. Check Variable Relationships (Use in Training and Logging Python File)
+#7. Check Variable Relationships (Use in Training and Logging Python File)
 def check_variable_relationships(df, target, top_n=5, plot=True):
     """
     Check linear or non-linear relationships between features and target.
@@ -317,7 +246,7 @@ def check_variable_relationships(df, target, top_n=5, plot=True):
 
 
 
-#7. Check if the feature needs scaling
+#8. Check if the feature needs scaling
 
 def check_feature_scaling(df):
     """
@@ -343,9 +272,74 @@ def check_feature_scaling(df):
 
 
 
+def scale_features(df, method="standard"):
+    """
+    Scale numeric features in a DataFrame.
+    
+    Parameters:
+        df (pd.DataFrame): The input DataFrame.
+        method (str): 'standard' for StandardScaler, 'minmax' for MinMaxScaler.
+    
+    Returns:
+        pd.DataFrame: DataFrame with scaled numeric features.
+    """
+    # Copy to avoid changing original
+    df_scaled = df.copy()
+    
+    # Select numeric columns
+    numeric_cols = df_scaled.select_dtypes(include=['number']).columns
+    
+    if method == "standard":
+        scaler = StandardScaler()
+    elif method == "minmax":
+        scaler = MinMaxScaler()
+    else:
+        raise ValueError("method must be 'standard' or 'minmax'")
+    
+    # Fit & transform
+    df_scaled[numeric_cols] = scaler.fit_transform(df_scaled[numeric_cols])
+
+    df = df_scaled
+    
+    return df
 
 
-# 8.Check class imbalance (for classification problems) 
+
+
+#9. Encode Categorical Columns.
+
+
+def encode_categorical(df, onehot_cols=None, label_cols=None):
+    """
+    Encode categorical columns in a DataFrame with flexibility.
+    
+    Parameters:
+        df (pd.DataFrame): Input DataFrame
+        onehot_cols (list): Columns to one-hot encode
+        label_cols (list): Columns to label encode
+    
+    Returns:
+        pd.DataFrame: DataFrame with encoded categorical columns
+    """
+    df_encoded = df.copy()
+    
+    # One-hot encoding (order does not matter, dummy variables)
+    if onehot_cols:
+        df_encoded = pd.get_dummies(df_encoded, columns=onehot_cols, drop_first=True)
+    
+    # Label encoding (order matters)
+    if label_cols:
+        le = LabelEncoder()
+        for col in label_cols:
+            df_encoded[col] = le.fit_transform(df_encoded[col].astype(str))
+    
+    df = df_encoded
+    
+    return df
+
+
+
+# 10.Check class imbalance (for classification problems) 
 def check_class_balance(df, target):  #Use in Training and Logging Python File
     """
     Returns the distribution of classes in the target column.
@@ -384,106 +378,145 @@ def handle_class_imbalance(X, y, method="smote"):
         raise ValueError("method must be one of ['smote', 'oversample', 'undersample']")
 
     X_res, y_res = sampler.fit_resample(X, y)
-    return X_res, y_res
 
+    X_res, y_res  = X, y
 
+    return X, y
 
 
 
 #BEGIN DATA PREPROCESSING AND ANALYSIS
-# Step 1: create_time_features
-df = create_time_features(df)
+
+def preprocess_data_linear_reg(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Performs a full data preprocessing for linear regression models,
+    including data cleaning, outlier handling, and scaling.
+
+    Args:
+        df (pd.DataFrame): The input DataFrame.
+
+    Returns:
+        pd.DataFrame: The processed DataFrame ready for model training.
+    """
+    print("\n--- Starting The Preprocessing Pipeline ---")
+
+    # Step 1: Standardize the column headers
+    df = clean_column_names(df)
+
+    # Step 2: Check and handle missing values
+    missing = check_missing_values(df)
+    if missing is not None and not missing.empty:
+        print("\nHandling missing values...")
+        df = handle_missing_values(df, strategy="mean") #adjustable arguement
+    else:
+        print("\nNo missing values found.")
+
+    # Step 3: Check and handle duplicates
+    duplicates = check_duplicates(df)
+    if duplicates is not None and duplicates > 0:
+        print(f"Found {duplicates} duplicate rows. Removing...")
+        df = remove_duplicates(df)
+    else:
+        print("\nNo duplicates found.")
+
+    # Step 4: Check and handle outliers for numeric columns
+    numeric_cols = df.select_dtypes(include=['number']).columns.tolist()
+    for col in numeric_cols:
+        outliers = check_outliers(df, cols=[col])
+        if outliers is not None and not outliers.empty:
+            print(f"\nHandling outliers in column: {col}")
+            df = handle_outliers(df, column=col)
+        else:
+            print(f"No outliers found in column: {col}")
+
+    # Step 5: Encode Categorical Columns
+    print("\n--- Encoding Categorical Columns ---")
+    df = encode_categorical(df, onehot_cols=['productline', 'productcode', 'customername', 'country']) #adjustable argument
+
+    # Step 6: Scale numerical features
+    # Note: This is an important step for linear regression.
+    # We check for scaling needs and apply it only if necessary.
+    scaling_info = check_feature_scaling(df)
+    if scaling_info["needs_scaling"]:
+        print("\nScaling numeric features...")
+        df = scale_features(df, method="standard")
+    else:
+        print("\nNo scaling needed.")
+
+    print("\n--- Data Preprocessing Complete ---")
+    print(f"Final DataFrame shape: {df.shape}")
+    print("Final Columns:", df.columns.tolist())
+    return df
 
 
-# Step 2: aggregate_daily
-df = aggregate_daily(df)
-
-
-#Step 3: add rolling features
-df = add_rolling_features(df)
-
-
-#Step 4: check data types
-print("\n--- Data Types ---")
-print(check_dtypes(df))
-
-
-#Step 5: Check and Fix Mising Values
-print("\n--- Missing Values ---")
-print(check_missing_values(df))
-# Optionally handle missing values
-df = handle_missing_values(df, strategy="mean")
-
-
-#Step 6:print("\n--- Duplicate Count ---")
-print(check_duplicates(df))
-df = remove_duplicates(df)
-
-
-
-#Step 7: Check and fix outliers
-print("\n--- Outliers ---")
-print(check_outliers(df, cols=["sales", "price"]))   #adjustable columns
-# Example: handle outliers in one column
-df = handle_outliers(df, column="sales")
-
-
-# Step 8:Feature-Target Correlations
-print("\n--- Feature Correlations with Target (sales) ---")
-correlations, features = check_feature_target_correlation(df, target="sales") #adjustable columns
-print(correlations)
-print("Selected Features:", features)
-
-
-
-# Step 9: Check variable relationships
-print("\n--- Variable Relationships ---")
-relationships = check_variable_relationships(df, target="sales", plot=False) #adjustable columns
-print(relationships.head())
-
-
-#Step 10: Scaling Check
-print("\n--- Scaling Check ---")
-scaling_info = check_feature_scaling(df)
-print(scaling_info["stats"])
-print("Needs scaling:", scaling_info["needs_scaling"])
+if __name__ == "__main__":
+    preprocess_data_linear_reg(df)
 
 
 
 
+#Save Processed Data
+def save_processed_data(df: pd.DataFrame, clean_data_dir: str = "data/cleaned"):
+    """
+    Saves a processed DataFrame to a specified directory with a timestamp
+    and also saves a latest copy to a different location.
+
+    Args:
+        df (pd.DataFrame): The processed DataFrame to be saved.
+        clean_data_dir (str): The directory to save the timestamped file.
+    """
+    # Create the directory if it doesn't exist
+    os.makedirs(clean_data_dir, exist_ok=True)
+    
+    # Save with timestamp
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    save_path = os.path.join(clean_data_dir, f"ref_data_{timestamp}.csv")
+    df.to_csv(save_path, index=False)
+    print(f"Cleaned data saved to {save_path}")
+
+    # Save a latest copy for MLflow/training
+    latest_path = os.path.join("data", "ref_data.csv")
+    df.to_csv(latest_path, index=False)
+    print(f"Latest clean data also saved to {latest_path}")
 
 
 
+if __name__ == "__main__":
+    save_processed_data(df)
 
-
- # Save with timestamp
-timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-save_path = os.path.join(CLEAN_DATA_DIR, f"ref_data_{timestamp}.csv")
-df.to_csv(save_path, index=False)
-print(f"Cleaned data saved to {save_path}")
-
-
-#Save a latest copy for MLflow/training
-latest_path = os.path.join("data", "ref_data.csv")
-df.to_csv(latest_path, index=False)
-print(f"Latest clean data also saved to {latest_path}")
 
 
 #Data Versioning
 def integrate_dvc():
-    """Run DVC integration commands for tracking training data."""
-    commands = [
-        "git init",
-        "dvc init",
-        'git commit -m "Initialize DVC"',
-        "dvc add data/ref_data.csv",
-        "git add data/ref_data.csv.dvc .gitignore",
-        'git commit -m "Track cleaned training data with DVC"'
-    ]
+    """Run DVC integration commands for tracking training data (idempotent)."""
+    commands = []
 
+    # Only initialize git if not already a repo
+    if not os.path.exists(".git"):
+        commands.append("git init")
+
+    # Use -f to avoid failure if DVC is already initialized
+    commands.append("dvc init -f")
+
+    # Commit initialization (ignore failure if already done)
+    commands.append('git commit -m "Initialize DVC" || echo "DVC already initialized"')
+
+    # Track dataset
+    commands.append("dvc add data/ref_data.csv")
+
+    # Add .gitignore only if it exists
+    if os.path.exists(".gitignore"):
+        commands.append("git add data/ref_data.csv.dvc .gitignore")
+    else:
+        commands.append("git add data/ref_data.csv.dvc")
+
+    commands.append('git commit -m "Track cleaned training data with DVC" || echo "Already tracked"')
+
+    # Execute each command once
     for cmd in commands:
         print(f"Running: {cmd}")
-        subprocess.run(cmd, shell=True, check=True)
+        subprocess.run(cmd, shell=True, check=False)
+
 
 if __name__ == "__main__":
     integrate_dvc()

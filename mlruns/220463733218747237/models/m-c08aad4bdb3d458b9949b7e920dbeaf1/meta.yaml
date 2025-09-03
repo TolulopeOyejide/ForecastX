@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-c08aad4bdb3d458b9949b7e920dbeaf1/artifacts
+creation_timestamp: 1756723400347
+experiment_id: '220463733218747237'
+last_updated_timestamp: 1756723405936
+model_id: m-c08aad4bdb3d458b9949b7e920dbeaf1
+model_type: null
+name: LinearRegression
+source_run_id: 09dc4dfd0f3c4950af6898c8c9f99b7e
+status: 2
+status_message: null

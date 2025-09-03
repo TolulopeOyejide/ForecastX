@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-fd6d89d513bf4edd8d5db6e99576f35a/artifacts
+creation_timestamp: 1756723465488
+experiment_id: '220463733218747237'
+last_updated_timestamp: 1756723467422
+model_id: m-fd6d89d513bf4edd8d5db6e99576f35a
+model_type: null
+name: KNN
+source_run_id: 2adc70c9a992466da6e7f9ef70f73357
+status: 2
+status_message: null
