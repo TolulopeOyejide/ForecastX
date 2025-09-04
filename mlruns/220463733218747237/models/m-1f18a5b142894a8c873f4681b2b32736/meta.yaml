@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-1f18a5b142894a8c873f4681b2b32736/artifacts
+creation_timestamp: 1756917022882
+experiment_id: '220463733218747237'
+last_updated_timestamp: 1756917024934
+model_id: m-1f18a5b142894a8c873f4681b2b32736
+model_type: null
+name: NeuralNetwork
+source_run_id: b9a15bfd27db4b93bc6c1a7d76ea756e
+status: 2
+status_message: null

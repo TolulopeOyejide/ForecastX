@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/ForecastX-/mlruns/220463733218747237/8e265a38681440628662aa7efa248fb8/artifacts
+end_time: 1756979260669
+entry_point_name: ''
+experiment_id: '220463733218747237'
+lifecycle_stage: active
+run_id: 8e265a38681440628662aa7efa248fb8
+run_name: NeuralNetwork
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756978941052
+status: 3
+tags: []
+user_id: codespace

@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/ForecastX-/mlruns/220463733218747237/e45046f3550541afaa59c0c15a6d61c8/artifacts
+end_time: 1756983196649
+entry_point_name: ''
+experiment_id: '220463733218747237'
+lifecycle_stage: active
+run_id: e45046f3550541afaa59c0c15a6d61c8
+run_name: Ridge
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756983194289
+status: 3
+tags: []
+user_id: codespace

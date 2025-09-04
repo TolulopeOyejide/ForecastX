@@ -7,6 +7,8 @@ from imblearn.over_sampling import SMOTE, RandomOverSampler
 from imblearn.under_sampling import RandomUnderSampler
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.preprocessing import LabelEncoder
+from sklearn.compose import ColumnTransformer
+import joblib
 import subprocess
 import os
 from datetime import datetime
@@ -84,6 +86,7 @@ def handle_missing_values(df, strategy="mean", fill_value=None):
         return df.fillna(fill_value)
     else:
         raise ValueError("Invalid strategy. Choose from: mean, median, mode, drop, constant.")   
+
 
 
 
@@ -385,9 +388,31 @@ def handle_class_imbalance(X, y, method="smote"):
 
 
 
+#11. Automatically detect datetime columns and convert them to numeric features (year, month, day).
+def process_datetime_columns(df):
+    """
+    Converts any datetime columns to numeric year, month, day features.
+    """
+    df = df.copy()
+    datetime_cols = df.select_dtypes(include=["object"]).columns.tolist()
+
+    for col in datetime_cols:
+        try:
+            df[col] = pd.to_datetime(df[col])
+            df[f"{col}_year"] = df[col].dt.year
+            df[f"{col}_month"] = df[col].dt.month
+            df[f"{col}_day"] = df[col].dt.day
+            df.drop(col, axis=1, inplace=True)
+            print(f"Processed datetime column: {col}")
+        except (ValueError, TypeError):
+            # Not a datetime column, skip
+            continue
+    return df
+    
+
 #BEGIN DATA PREPROCESSING AND ANALYSIS
 
-def preprocess_data_linear_reg(df: pd.DataFrame) -> pd.DataFrame:
+def process_data_for_prediction(df):
     """
     Performs a full data preprocessing for linear regression models,
     including data cleaning, outlier handling, and scaling.
@@ -419,7 +444,27 @@ def preprocess_data_linear_reg(df: pd.DataFrame) -> pd.DataFrame:
     else:
         print("\nNo duplicates found.")
 
-    # Step 4: Check and handle outliers for numeric columns
+    
+    # Step 3b: Convert datetime columns
+    df = process_datetime_columns(df)
+    
+
+
+    # Step 4:  Check_feature_target_correlation
+    print("--- Check Feature-Target Correlation ---")
+    correlated_features_df, selected_features_list = check_feature_target_correlation(df, target='sales', threshold=0.3) #adjustable argument
+    print("Correlated Features (DataFrame):\n", correlated_features_df)
+    print("\nSelected Features (List):\n", selected_features_list)
+
+
+
+     # Step 5: check_variable_relationships
+    print("\n--- Check Variable Relationships ---")
+    relationships_df = check_variable_relationships(df, target='sales', top_n=3, plot=True) #adjustable argument
+    print("Variable Relationships (DataFrame):\n", relationships_df)
+
+
+    # Step 6: Check and handle outliers for numeric columns
     numeric_cols = df.select_dtypes(include=['number']).columns.tolist()
     for col in numeric_cols:
         outliers = check_outliers(df, cols=[col])
@@ -429,60 +474,72 @@ def preprocess_data_linear_reg(df: pd.DataFrame) -> pd.DataFrame:
         else:
             print(f"No outliers found in column: {col}")
 
-    # Step 5: Encode Categorical Columns
+    # Step 7: Encode Categorical Columns
     print("\n--- Encoding Categorical Columns ---")
-    df = encode_categorical(df, onehot_cols=['productline', 'productcode', 'customername', 'country']) #adjustable argument
+    categorical_cols = df.select_dtypes(include=['object', 'bool']).columns.tolist() # adjustable
+    df = encode_categorical(df, onehot_cols=categorical_cols, label_cols=None)
 
-    # Step 6: Scale numerical features
-    # Note: This is an important step for linear regression.
-    # We check for scaling needs and apply it only if necessary.
-    scaling_info = check_feature_scaling(df)
-    if scaling_info["needs_scaling"]:
-        print("\nScaling numeric features...")
-        df = scale_features(df, method="standard")
-    else:
-        print("\nNo scaling needed.")
+
+    # # Step 8: Scale numerical features
+    # # Note: This is an important step for linear regression.
+    # # We check for scaling needs and apply it only if necessary.
+    # scaling_info = check_feature_scaling(df)
+    # if scaling_info["needs_scaling"]:
+    #     print("\nScaling numeric features...")
+    #     df = scale_features(df, method="standard")
+    # else:
+    #     print("\nNo scaling needed.")
+
+    
+    # Step 9: Save features into a file.
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+
+    feature_list_path = "models/features"
+    os.makedirs(feature_list_path, exist_ok=True)
+
+    features = [col for col in df.columns if col != "sales"] #adjustable argument
+
+    feature_list_path_ts = os.path.join(feature_list_path, f"features_{timestamp}.txt")
+
+    with open(feature_list_path_ts, "w") as f:
+        f.write("\n".join(features))
+    print(f"Features saved to {feature_list_path_ts}")
+
+
 
     print("\n--- Data Preprocessing Complete ---")
     print(f"Final DataFrame shape: {df.shape}")
-    print("Final Columns:", df.columns.tolist())
+    #print("Final Columns:", df.columns.tolist())
     return df
 
+    
 
-if __name__ == "__main__":
-    preprocess_data_linear_reg(df)
+
+df = process_data_for_prediction(df)
 
 
 
 
 #Save Processed Data
-def save_processed_data(df: pd.DataFrame, clean_data_dir: str = "data/cleaned"):
-    """
-    Saves a processed DataFrame to a specified directory with a timestamp
-    and also saves a latest copy to a different location.
+def save_processed_data(df, CLEAN_DATA_DIR = "data/cleaned/"):
+    import os
+    from datetime import datetime
 
-    Args:
-        df (pd.DataFrame): The processed DataFrame to be saved.
-        clean_data_dir (str): The directory to save the timestamped file.
-    """
-    # Create the directory if it doesn't exist
-    os.makedirs(clean_data_dir, exist_ok=True)
-    
-    # Save with timestamp
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    save_path = os.path.join(clean_data_dir, f"ref_data_{timestamp}.csv")
-    df.to_csv(save_path, index=False)
-    print(f"Cleaned data saved to {save_path}")
+    os.makedirs(CLEAN_DATA_DIR, exist_ok=True)
 
-    # Save a latest copy for MLflow/training
+    # Save latest copy for DVC
     latest_path = os.path.join("data", "ref_data.csv")
     df.to_csv(latest_path, index=False)
-    print(f"Latest clean data also saved to {latest_path}")
+
+    # Save timestamped copy
+    timestamped_path = os.path.join(CLEAN_DATA_DIR, f"cleaned_data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
+    df.to_csv(timestamped_path, index=False)
+
+    print(f"Processed dataset saved: {latest_path} and {timestamped_path}")
 
 
 
-if __name__ == "__main__":
-    save_processed_data(df)
+save_processed_data(df)
 
 
 

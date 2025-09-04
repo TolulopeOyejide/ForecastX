@@ -1,0 +1,738 @@
+ordernumber
+quantityordered
+priceeach
+orderlinenumber
+qtr_id
+month_id
+year_id
+msrp
+orderdate_year
+orderdate_month
+orderdate_day
+status_Disputed
+status_In Process
+status_On Hold
+status_Resolved
+status_Shipped
+productline_Motorcycles
+productline_Planes
+productline_Ships
+productline_Trains
+productline_Trucks and Buses
+productline_Vintage Cars
+productcode_S10_1949
+productcode_S10_2016
+productcode_S10_4698
+productcode_S10_4757
+productcode_S10_4962
+productcode_S12_1099
+productcode_S12_1108
+productcode_S12_1666
+productcode_S12_2823
+productcode_S12_3148
+productcode_S12_3380
+productcode_S12_3891
+productcode_S12_3990
+productcode_S12_4473
+productcode_S12_4675
+productcode_S18_1097
+productcode_S18_1129
+productcode_S18_1342
+productcode_S18_1367
+productcode_S18_1589
+productcode_S18_1662
+productcode_S18_1749
+productcode_S18_1889
+productcode_S18_1984
+productcode_S18_2238
+productcode_S18_2248
+productcode_S18_2319
+productcode_S18_2325
+productcode_S18_2432
+productcode_S18_2581
+productcode_S18_2625
+productcode_S18_2795
+productcode_S18_2870
+productcode_S18_2949
+productcode_S18_2957
+productcode_S18_3029
+productcode_S18_3136
+productcode_S18_3140
+productcode_S18_3232
+productcode_S18_3259
+productcode_S18_3278
+productcode_S18_3320
+productcode_S18_3482
+productcode_S18_3685
+productcode_S18_3782
+productcode_S18_3856
+productcode_S18_4027
+productcode_S18_4409
+productcode_S18_4522
+productcode_S18_4600
+productcode_S18_4668
+productcode_S18_4721
+productcode_S18_4933
+productcode_S24_1046
+productcode_S24_1444
+productcode_S24_1578
+productcode_S24_1628
+productcode_S24_1785
+productcode_S24_1937
+productcode_S24_2000
+productcode_S24_2011
+productcode_S24_2022
+productcode_S24_2300
+productcode_S24_2360
+productcode_S24_2766
+productcode_S24_2840
+productcode_S24_2841
+productcode_S24_2887
+productcode_S24_2972
+productcode_S24_3151
+productcode_S24_3191
+productcode_S24_3371
+productcode_S24_3420
+productcode_S24_3432
+productcode_S24_3816
+productcode_S24_3856
+productcode_S24_3949
+productcode_S24_3969
+productcode_S24_4048
+productcode_S24_4258
+productcode_S24_4278
+productcode_S24_4620
+productcode_S32_1268
+productcode_S32_1374
+productcode_S32_2206
+productcode_S32_2509
+productcode_S32_3207
+productcode_S32_3522
+productcode_S32_4289
+productcode_S32_4485
+productcode_S50_1341
+productcode_S50_1392
+productcode_S50_1514
+productcode_S50_4713
+productcode_S700_1138
+productcode_S700_1691
+productcode_S700_1938
+productcode_S700_2047
+productcode_S700_2466
+productcode_S700_2610
+productcode_S700_2824
+productcode_S700_2834
+productcode_S700_3167
+productcode_S700_3505
+productcode_S700_3962
+productcode_S700_4002
+productcode_S72_1253
+productcode_S72_3212
+customername_Alpha Cognac
+customername_Amica Models & Co.
+customername_Anna's Decorations, Ltd
+customername_Atelier graphique
+customername_Australian Collectables, Ltd
+customername_Australian Collectors, Co.
+customername_Australian Gift Network, Co
+customername_Auto Assoc. & Cie.
+customername_Auto Canal Petit
+customername_Auto-Moto Classics Inc.
+customername_Baane Mini Imports
+customername_Bavarian Collectables Imports, Co.
+customername_Blauer See Auto, Co.
+customername_Boards & Toys Co.
+customername_CAF Imports
+customername_Cambridge Collectables Co.
+customername_Canadian Gift Exchange Network
+customername_Classic Gift Ideas, Inc
+customername_Classic Legends Inc.
+customername_Clover Collections, Co.
+customername_Collectable Mini Designs Co.
+customername_Collectables For Less Inc.
+customername_Corporate Gift Ideas Co.
+customername_Corrida Auto Replicas, Ltd
+customername_Cruz & Sons Co.
+customername_Daedalus Designs Imports
+customername_Danish Wholesale Imports
+customername_Diecast Classics Inc.
+customername_Diecast Collectables
+customername_Double Decker Gift Stores, Ltd
+customername_Dragon Souveniers, Ltd.
+customername_Enaco Distributors
+customername_Euro Shopping Channel
+customername_FunGiftIdeas.com
+customername_Gift Depot Inc.
+customername_Gift Ideas Corp.
+customername_Gifts4AllAges.com
+customername_Handji Gifts& Co
+customername_Heintze Collectables
+customername_Herkku Gifts
+customername_Iberia Gift Imports, Corp.
+customername_L'ordine Souveniers
+customername_La Corne D'abondance, Co.
+customername_La Rochelle Gifts
+customername_Land of Toys Inc.
+customername_Lyon Souveniers
+customername_Marseille Mini Autos
+customername_Marta's Replicas Co.
+customername_Men 'R' US Retailers, Ltd.
+customername_Microscale Inc.
+customername_Mini Auto Werke
+customername_Mini Caravy
+customername_Mini Classics
+customername_Mini Creations Ltd.
+customername_Mini Gifts Distributors Ltd.
+customername_Mini Wheels Co.
+customername_Motor Mint Distributors Inc.
+customername_Muscle Machine Inc
+customername_Norway Gifts By Mail, Co.
+customername_Online Diecast Creations Co.
+customername_Online Mini Collectables
+customername_Osaka Souveniers Co.
+customername_Oulu Toy Supplies, Inc.
+customername_Petit Auto
+customername_Quebec Home Shopping Network
+customername_Reims Collectables
+customername_Rovelli Gifts
+customername_Royal Canadian Collectables, Ltd.
+customername_Royale Belge
+customername_Salzburg Collectables
+customername_Saveley & Henriot, Co.
+customername_Scandinavian Gift Ideas
+customername_Signal Collectibles Ltd.
+customername_Signal Gift Stores
+customername_Souveniers And Things Co.
+customername_Stylish Desk Decors, Co.
+customername_Suominen Souveniers
+customername_Super Scale Inc.
+customername_Technics Stores Inc.
+customername_Tekni Collectables Inc.
+customername_The Sharp Gifts Warehouse
+customername_Tokyo Collectables, Ltd
+customername_Toms Spezialitten, Ltd
+customername_Toys of Finland, Co.
+customername_Toys4GrownUps.com
+customername_UK Collectables, Ltd.
+customername_Vida Sport, Ltd
+customername_Vitachrome Inc.
+customername_Volvo Model Replicas, Co
+customername_West Coast Collectables Co.
+customername_giftsbymail.co.uk
+phone_(071) 23 67 2555
+phone_(1) 42.34.2555
+phone_(1) 47.55.6555
+phone_(171) 555-0297
+phone_(171) 555-1555
+phone_(171) 555-2282
+phone_(171) 555-7555
+phone_(198) 555-8888
+phone_(514) 555-8054
+phone_(604) 555-3392
+phone_(604) 555-4555
+phone_(91) 555 22 82
+phone_(91) 555 94 44
+phone_(93) 203 4555
+phone_(95) 555 82 82
+phone_+33 1 46 62 7555
+phone_+34 913 728 555
+phone_+353 1862 1555
+phone_+358 9 8045 555
+phone_+47 2212 1555
+phone_+47 2267 3215
+phone_+49 69 66 90 2555
+phone_+49 89 61 08 9555
+phone_+61 2 9495 8555
+phone_+63 2 555 3587
+phone_+65 221 7555
+phone_+65 224 1555
+phone_+81 06 6342 5555
+phone_+81 3 3584 0555
+phone_011-4988555
+phone_02 9936 8555
+phone_0221-5554327
+phone_03 9520 4555
+phone_035-640555
+phone_0522-556555
+phone_0695-34 6555
+phone_07-98 9555
+phone_0897-034555
+phone_0921-12 3555
+phone_20.16.1555
+phone_2015559350
+phone_2035552570
+phone_2035554407
+phone_2035559545
+phone_2125551500
+phone_2125551957
+phone_2125557413
+phone_2125557818
+phone_2125558493
+phone_2155551555
+phone_2155554369
+phone_2155554695
+phone_2155559857
+phone_26.47.1555
+phone_30.59.8555
+phone_31 12 3555
+phone_3105552373
+phone_3105553722
+phone_40.32.2555
+phone_40.67.8555
+phone_4085553659
+phone_4155551450
+phone_4155554312
+phone_5085552555
+phone_5085559555
+phone_6035558647
+phone_61-7-3844-6555
+phone_61-9-3844-6555
+phone_61.77.6555
+phone_6175552555
+phone_6175555555
+phone_6175557555
+phone_6175558428
+phone_6175558555
+phone_6175559555
+phone_6265557265
+phone_6505551386
+phone_6505555787
+phone_6505556809
+phone_6562-9555
+phone_7025551838
+phone_7605558146
+phone_7675-3555
+phone_78.32.5555
+phone_86 21 3555
+phone_88.60.1555
+phone_90-224 8555
+phone_91.24.4555
+phone_9145554562
+phone_981-443655
+addressline1_11328 Douglas Av.
+addressline1_12, rue des Bouchers
+addressline1_120 Hanover Sq.
+addressline1_15 McCallum Street - NatWest Center #13-03
+addressline1_16780 Pompton St.
+addressline1_1785 First Street
+addressline1_184, chausse de Tournai
+addressline1_1900 Oak St.
+addressline1_2, rue du Commerce
+addressline1_2-2-8 Roppongi
+addressline1_201 Miller Street
+addressline1_23 Tsawassen Blvd.
+addressline1_2304 Long Airport Avenue
+addressline1_24, place Kluber
+addressline1_2440 Pompton St.
+addressline1_25 Maiden Lane
+addressline1_25, rue Lauriston
+addressline1_25593 South Bay Ln.
+addressline1_265, boulevard Charonne
+addressline1_2678 Kingston Rd.
+addressline1_27 rue du Colonel Pierre Avia
+addressline1_2793 Furth Circle
+addressline1_3086 Ingle Ln.
+addressline1_31 Duncan St. West End
+addressline1_35 King George
+addressline1_361 Furth Circle
+addressline1_3675 Furth Circle
+addressline1_3758 North Pendale Street
+addressline1_39323 Spinnaker Dr.
+addressline1_4092 Furth Circle
+addressline1_4097 Douglas Av.
+addressline1_43 rue St. Laurent
+addressline1_4575 Hillside Dr.
+addressline1_4658 Baden Av.
+addressline1_5290 North Pendale Street
+addressline1_54, rue Royale
+addressline1_5557 North Pendale Street
+addressline1_567 North Pendale Street
+addressline1_5677 Strong St.
+addressline1_59 rue de l'Abbaye
+addressline1_5905 Pompton St.
+addressline1_6047 Douglas Av.
+addressline1_6251 Ingle Ln.
+addressline1_636 St Kilda Road
+addressline1_67, avenue de l'Europe
+addressline1_67, rue des Cinquante Otages
+addressline1_7 Allen Street
+addressline1_7476 Moss Rd.
+addressline1_7586 Pompton St.
+addressline1_7635 Spinnaker Dr.
+addressline1_7734 Strong St.
+addressline1_782 First Street
+addressline1_7825 Douglas Av.
+addressline1_78934 Hillside Dr.
+addressline1_8489 Strong St.
+addressline1_8616 Spinnaker Dr.
+addressline1_897 Long Airport Avenue
+addressline1_9408 Furth Circle
+addressline1_?kergatan 24
+addressline1_Berguvsvgen  8
+addressline1_Berkeley Gardens 12  Brewery
+addressline1_Boulevard Tirou, 255
+addressline1_Bronz Sok., Bronz Apt. 3/6 Tesvikiye
+addressline1_C/ Araquil, 67
+addressline1_C/ Moralzarzal, 86
+addressline1_C/ Romero, 33
+addressline1_Dojima Avanza 4F, 1-6-20 Dojima, Kita-ku
+addressline1_Drammen 121, PR 744 Sentrum
+addressline1_Drammensveien 126 A, PB 744 Sentrum
+addressline1_Erling Skakkes gate 78
+addressline1_Fauntleroy Circus
+addressline1_Garden House Crowther Way
+addressline1_Geislweg 14
+addressline1_Grenzacherweg 237
+addressline1_Hansastr. 15
+addressline1_Keskuskatu 45
+addressline1_Kirchgasse 6
+addressline1_Lyonerstr. 34
+addressline1_Mehrheimerstr. 369
+addressline1_Merchants House, 27-30 Merchant's Quay
+addressline1_Monitor Money Building, 815 Pacific Hwy
+addressline1_Rambla de Catalu¤a, 23
+addressline1_Rue Joseph-Bens 532
+addressline1_Smagsloget 45
+addressline1_Software Engineering Center, SEC Oy
+addressline1_Strada Provinciale 124
+addressline1_Torikatu 38
+addressline1_Via Ludovico il Moro 22
+addressline1_Via Monte Bianco 34
+addressline1_Village Close - 106 Linden Road Sandown
+addressline1_Vinb'ltet 34
+addressline2_Floor No. 4
+addressline2_Level 15
+addressline2_Level 3
+addressline2_Level 6
+addressline2_Suite 101
+addressline2_Suite 200
+addressline2_Suite 400
+addressline2_Suite 750
+city_Allentown
+city_Barcelona
+city_Bergamo
+city_Bergen
+city_Boras
+city_Boston
+city_Brickhaven
+city_Bridgewater
+city_Brisbane
+city_Bruxelles
+city_Burbank
+city_Burlingame
+city_Cambridge
+city_Charleroi
+city_Chatswood
+city_Cowes
+city_Dublin
+city_Espoo
+city_Frankfurt
+city_Gensve
+city_Glen Waverly
+city_Glendale
+city_Graz
+city_Helsinki
+city_Kobenhavn
+city_Koln
+city_Las Vegas
+city_Lille
+city_Liverpool
+city_London
+city_Los Angeles
+city_Lule
+city_Lyon
+city_Madrid
+city_Makati City
+city_Manchester
+city_Marseille
+city_Melbourne
+city_Minato-ku
+city_Montreal
+city_Munich
+city_NYC
+city_Nantes
+city_Nashua
+city_New Bedford
+city_New Haven
+city_Newark
+city_North Sydney
+city_Osaka
+city_Oslo
+city_Oulu
+city_Paris
+city_Pasadena
+city_Philadelphia
+city_Reggio Emilia
+city_Reims
+city_Salzburg
+city_San Diego
+city_San Francisco
+city_San Jose
+city_San Rafael
+city_Sevilla
+city_Singapore
+city_South Brisbane
+city_Stavern
+city_Strasbourg
+city_Torino
+city_Toulouse
+city_Tsawassen
+city_Vancouver
+city_Versailles
+city_White Plains
+state_CA
+state_CT
+state_Isle of Wight
+state_MA
+state_NH
+state_NJ
+state_NSW
+state_NV
+state_NY
+state_Osaka
+state_PA
+state_Quebec
+state_Queensland
+state_Tokyo
+state_Victoria
+postalcode_10100
+postalcode_106-0032
+postalcode_1203
+postalcode_1227 MM
+postalcode_13008
+postalcode_1734
+postalcode_2
+postalcode_2060
+postalcode_2067
+postalcode_21240
+postalcode_24067
+postalcode_24100
+postalcode_28023
+postalcode_28034
+postalcode_3004
+postalcode_31000
+postalcode_3150
+postalcode_4101
+postalcode_4110
+postalcode_41101
+postalcode_42100
+postalcode_44000
+postalcode_5020
+postalcode_50553
+postalcode_50739
+postalcode_51003
+postalcode_51100
+postalcode_51247
+postalcode_530-0003
+postalcode_58339
+postalcode_59000
+postalcode_60528
+postalcode_62005
+postalcode_67000
+postalcode_69004
+postalcode_69045
+postalcode_70267
+postalcode_71270
+postalcode_75012
+postalcode_75016
+postalcode_75508
+postalcode_78000
+postalcode_79903
+postalcode_8010
+postalcode_8022
+postalcode_80686
+postalcode_8200
+postalcode_83030
+postalcode_90003
+postalcode_90110
+postalcode_91217
+postalcode_92561
+postalcode_94019
+postalcode_94217
+postalcode_97561
+postalcode_97562
+postalcode_97823
+postalcode_B-1180
+postalcode_B-6000
+postalcode_EC2 5NT
+postalcode_FIN-02271
+postalcode_H1J 1C3
+postalcode_N 0106
+postalcode_N 5804
+postalcode_PO31 7PJ
+postalcode_S-844 67
+postalcode_S-958 22
+postalcode_T2F 8M4
+postalcode_V3F 2K1
+postalcode_WA1 1DP
+postalcode_WX1 6LT
+postalcode_WX3 6FW
+country_Austria
+country_Belgium
+country_Canada
+country_Denmark
+country_Finland
+country_France
+country_Germany
+country_Ireland
+country_Italy
+country_Japan
+country_Norway
+country_Philippines
+country_Singapore
+country_Spain
+country_Sweden
+country_Switzerland
+country_UK
+country_USA
+territory_EMEA
+territory_Japan
+contactlastname_Ashworth
+contactlastname_Barajas
+contactlastname_Benitez
+contactlastname_Bennett
+contactlastname_Berglund
+contactlastname_Bergulfsen
+contactlastname_Bertrand
+contactlastname_Brown
+contactlastname_Calaghan
+contactlastname_Cartrain
+contactlastname_Cassidy
+contactlastname_Cervantes
+contactlastname_Chandler
+contactlastname_Citeaux
+contactlastname_Connery
+contactlastname_Cruz
+contactlastname_Da Cunha
+contactlastname_Devon
+contactlastname_Dewey
+contactlastname_Donnermeyer
+contactlastname_Ferguson
+contactlastname_Fernandez
+contactlastname_Franco
+contactlastname_Fresnisre
+contactlastname_Freyre
+contactlastname_Frick
+contactlastname_Hardy
+contactlastname_Henriot
+contactlastname_Hernandez
+contactlastname_Hirano
+contactlastname_Holz
+contactlastname_Huxley
+contactlastname_Ibsen
+contactlastname_Karttunen
+contactlastname_Keitel
+contactlastname_Kentary
+contactlastname_King
+contactlastname_Klaeboe
+contactlastname_Koskitalo
+contactlastname_Kuo
+contactlastname_Labrune
+contactlastname_Larsson
+contactlastname_Lebihan
+contactlastname_Lewis
+contactlastname_Lincoln
+contactlastname_Mendel
+contactlastname_Moroni
+contactlastname_Murphy
+contactlastname_Natividad
+contactlastname_Nelson
+contactlastname_O'Hara
+contactlastname_Oeztan
+contactlastname_Perrier
+contactlastname_Petersen
+contactlastname_Pfalzheim
+contactlastname_Pipps
+contactlastname_Rance
+contactlastname_Roel
+contactlastname_Roulet
+contactlastname_Rovelli
+contactlastname_Saavedra
+contactlastname_Saveley
+contactlastname_Schmitt
+contactlastname_Shimamura
+contactlastname_Sommer
+contactlastname_Suominen
+contactlastname_Tam
+contactlastname_Tannamuri
+contactlastname_Taylor
+contactlastname_Thompson
+contactlastname_Tonini
+contactlastname_Tseng
+contactlastname_Victorino
+contactlastname_Yoshido
+contactlastname_Young
+contactlastname_Yu
+contactfirstname_Akiko
+contactfirstname_Allen
+contactfirstname_Ann
+contactfirstname_Anna
+contactfirstname_Annette
+contactfirstname_Arnold
+contactfirstname_Carine
+contactfirstname_Catherine
+contactfirstname_Christina
+contactfirstname_Dan
+contactfirstname_Daniel
+contactfirstname_Dean
+contactfirstname_Diego
+contactfirstname_Dominique
+contactfirstname_Eduardo
+contactfirstname_Elizabeth
+contactfirstname_Eric
+contactfirstname_Francisca
+contactfirstname_Frederique
+contactfirstname_Georg
+contactfirstname_Giovanni
+contactfirstname_Helen
+contactfirstname_Henriette
+contactfirstname_Jan
+contactfirstname_Janine
+contactfirstname_Jean
+contactfirstname_Jeff
+contactfirstname_Jesus
+contactfirstname_Jonas
+contactfirstname_Jose Pedro
+contactfirstname_Julie
+contactfirstname_Juri
+contactfirstname_Jytte
+contactfirstname_Kalle
+contactfirstname_Kee
+contactfirstname_Kwai
+contactfirstname_Kyung
+contactfirstname_Laurence
+contactfirstname_Leslie
+contactfirstname_Maria
+contactfirstname_Marie
+contactfirstname_Marta
+contactfirstname_Martine
+contactfirstname_Mart¡n
+contactfirstname_Mary
+contactfirstname_Matti
+contactfirstname_Maurizio
+contactfirstname_Michael
+contactfirstname_Miguel
+contactfirstname_Mory
+contactfirstname_Palle
+contactfirstname_Paolo
+contactfirstname_Pascale
+contactfirstname_Paul
+contactfirstname_Peter
+contactfirstname_Pirkko
+contactfirstname_Roland
+contactfirstname_Rosa
+contactfirstname_Sean
+contactfirstname_Steve
+contactfirstname_Sue
+contactfirstname_Thomas
+contactfirstname_Tony
+contactfirstname_Valarie
+contactfirstname_Veysel
+contactfirstname_Victoria
+contactfirstname_Violeta
+contactfirstname_Wendy
+contactfirstname_William
+contactfirstname_Wing C
+contactfirstname_Yoshi
+dealsize_Medium
+dealsize_Small

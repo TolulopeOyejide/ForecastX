@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-f0af1b28c4af47a28718f3128090d55c/artifacts
+creation_timestamp: 1756910654978
+experiment_id: '220463733218747237'
+last_updated_timestamp: 1756910657036
+model_id: m-f0af1b28c4af47a28718f3128090d55c
+model_type: null
+name: PolynomialRegression
+source_run_id: 2ae7a7c77269426c91d0c2f21c683bab
+status: 2
+status_message: null

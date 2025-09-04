@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-eee6dd7d2ed64a96997725b034dd2ce2/artifacts
+creation_timestamp: 1756979699079
+experiment_id: '220463733218747237'
+last_updated_timestamp: 1756979701227
+model_id: m-eee6dd7d2ed64a96997725b034dd2ce2
+model_type: null
+name: Lasso
+source_run_id: 694b6da10e4448b284dd2befb1cf3d05
+status: 2
+status_message: null

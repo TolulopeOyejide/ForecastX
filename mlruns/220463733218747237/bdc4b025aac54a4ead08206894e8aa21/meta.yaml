@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/ForecastX-/mlruns/220463733218747237/bdc4b025aac54a4ead08206894e8aa21/artifacts
+end_time: 1756981717690
+entry_point_name: ''
+experiment_id: '220463733218747237'
+lifecycle_stage: active
+run_id: bdc4b025aac54a4ead08206894e8aa21
+run_name: Lasso
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756981710450
+status: 3
+tags: []
+user_id: codespace

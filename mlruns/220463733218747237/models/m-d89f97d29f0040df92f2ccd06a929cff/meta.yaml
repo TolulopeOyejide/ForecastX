@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/ForecastX-/mlruns/220463733218747237/models/m-d89f97d29f0040df92f2ccd06a929cff/artifacts
+creation_timestamp: 1756916585672
+experiment_id: '220463733218747237'
+last_updated_timestamp: 1756916587723
+model_id: m-d89f97d29f0040df92f2ccd06a929cff
+model_type: null
+name: Ridge
+source_run_id: 902a33905bae4b70ad6ff5e08a57c19a
+status: 2
+status_message: null
