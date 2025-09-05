@@ -1,0 +1,95 @@
+name: Full MLOps Pipeline
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch: #run manually 
+
+jobs:
+  retrain-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      # Step to find the latest data file and check if it's new
+      - name: Find and check for new data file
+        id: check_data
+        run: |
+          latest_file=$(ls -t data/ | head -n 1)
+          echo "latest_data_path=data/$latest_file" >> $GITHUB_OUTPUT
+          
+          if [ -n "$latest_file" ]; then
+            echo "new_data_found=true" >> $GITHUB_OUTPUT
+          else
+            echo "new_data_found=false" >> $GITHUB_OUTPUT
+          fi
+          
+      # The next steps only run if new data was found
+      - name: Run Data Preprocessing
+        if: steps.check_data.outputs.new_data_found == 'true'
+        run: |
+          # Pass the path of the raw data to your preprocessing script
+          # The script should save the cleaned data to the 'data/cleaned/' directory
+          python src/process_data.py --input-path ${{ steps.check_data.outputs.latest_data_path }}
+
+      - name: Retrain Model with cleaned data
+        if: steps.check_data.outputs.new_data_found == 'true'
+        run: |
+          # Your retraining script can now read from the 'data/cleaned/' directory
+          python src/train_log_models.py
+          echo "retrained=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push new model file
+        if: steps.check_data.outputs.new_data_found == 'true'
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add data/cleaned/ # This commits the cleaned data
+          git add models/
+          git commit -m "feat: New model trained and data cleaned"
+          git push origin HEAD
+
+  deploy-api:
+    runs-on: ubuntu-latest
+    needs: retrain-and-push
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          
+      - name: Build and push Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/your-api-image:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/your-api-image:latest
+          
+      # - name: SSH into server and deploy
+      #   uses: appleboy/ssh-action@v0.1.7
+      #   with:
+      #     host: ${{ secrets.SERVER_IP }}
+      #     username: ${{ secrets.SERVER_USERNAME }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     script: |
+      #       echo "Deploying new API container..."
+      #       docker pull your-username/your-api-image:latest
+      #       docker stop your-api-container || true
+      #       docker rm your-api-container || true
+      #       docker run -d --name your-api-container -p 8002:8002 your-username/your-api-image:latest
+      #       echo "Deployment complete."

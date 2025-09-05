@@ -14,7 +14,7 @@ import os
 from datetime import datetime
 
 
-RAW_DATA_PATH = "data/company_sales_data.csv" #adjustable file name
+RAW_DATA_PATH = "data/raw/company_sales_data.csv" #adjustable file name
 CLEAN_DATA_DIR = "data/cleaned/"
 
 if not os.path.exists(RAW_DATA_PATH):
