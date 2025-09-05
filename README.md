@@ -51,7 +51,7 @@ ForecastX/
 
 ## Setup Instructions
 1. Clone the repository:  <br>
-   `git clone https://github.com/TolulopeOyejide/ForecastX-.git`
+   `https://github.com/TolulopeOyejide/ForecastX.git`
 
 
 
