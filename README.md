@@ -75,5 +75,3 @@ ForecastX/
    `docker pull tolulopeoyejide/sales-prediction-api` <br>
    `docker run -d -p 8002:8002 --name sales-api-container tolulopeoyejide/sales-prediction-api`
 
-
-5. Streamlit UI 
