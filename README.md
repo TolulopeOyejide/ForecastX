@@ -1,6 +1,15 @@
 # ForecastX – Company Sales Prediction App
 ForecastX is a complete MLOps pipeline designed to generate accurate sales forecasts. It ingests historical products(CSV/Excel) and delivers actionable predictions of future sales for individual customers. This solution enables businesses to proactively manage inventory, optimize marketing strategies, and improve overall decision-making.
 
+
+## The Demo Video
+
+Here's a quick demo video that shows Forecast - Company Sales Prediction App in action.
+
+[**Watch the Demo Video**](https://www.youtube.com/watch?v=3u1AGHt1flA)
+
+
+
 ## Features
 
 -   **Data Management**:
