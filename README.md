@@ -23,13 +23,13 @@ Here's a quick demo video that shows Forecast - Company Sales Prediction App in 
 -   **Advanced Model Development**:
     -   Features an automated Grid Search CV pipeline for robust model training.
     -   Explores a comprehensive suite of regression algorithms to select the best forming:
-        -   Linear Regression: A simple, interpretable model that finds the best-fitting straight line to predict a continuous outcome.
-        -   Polynomial Regression: An extension of linear regression that fits a curved line to capture non-linear relationships in the data.
-        -   Random Forest Regressor: An ensemble model that uses multiple decision trees to make robust predictions, reducing the risk of overfitting.
-        -   XGBoost Regressor: A powerful, high-performance gradient boosting model known for its accuracy and efficiency.
-        -   K-Nearest Neighbors (KNN) Regressor: A simple, instance-based model that predicts a value by averaging the values of the "k" most similar data points.
-        -   Support Vector Regressor (SVR): An effective model for high-dimensional data that finds a function to fit the data within a specified margin of tolerance.
-        -   Neural Network Regressor: A complex, brain-inspired model capable of learning highly non-linear and intricate patterns for precise predictions.
+        -   _Linear Regression_: A simple, interpretable model that finds the best-fitting straight line to predict a continuous outcome.
+        -   _Polynomial Regression_: An extension of linear regression that fits a curved line to capture non-linear relationships in the data.
+        -   _Random Forest Regressor_: An ensemble model that uses multiple decision trees to make robust predictions, reducing the risk of overfitting.
+        -   _XGBoost Regressor_: A powerful, high-performance gradient boosting model known for its accuracy and efficiency.
+        -   _K-Nearest Neighbors (KNN) Regressor_: A simple, instance-based model that predicts a value by averaging the values of the "k" most similar data points.
+        -   _Support Vector Regressor (SVR)_: An effective model for high-dimensional data that finds a function to fit the data within a specified margin of tolerance.
+        -   _Neural Network Regressor_: A complex, brain-inspired model capable of learning highly non-linear and intricate patterns for precise predictions.
 
 -   **Production & MLOps**:
     -   Serves predictions through a scalable API built with FastAPI.
